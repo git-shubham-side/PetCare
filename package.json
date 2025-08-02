@@ -1,0 +1,39 @@
+{
+  "name": "pet-project",
+  "version": "1.0.0",
+  "description": "A pet care Project for Pet Parents",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/git-shubham-side/PetCare.git"
+  },
+  "keywords": [
+    "Node",
+    "MERN",
+    "STACK",
+    "Pet",
+    "Petcare"
+  ],
+  "author": "Shubham Rathod",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/git-shubham-side/PetCare/issues"
+  },
+  "homepage": "https://github.com/git-shubham-side/PetCare#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "body-parser": "^2.2.0",
+    "connect-mongo": "^5.1.0",
+    "dot-env": "^0.0.1",
+    "dotenv": "^17.2.1",
+    "dotnet": "^1.1.4",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "mongoose": "^8.16.5",
+    "node-fetch": "^3.3.2"
+  }
+}
