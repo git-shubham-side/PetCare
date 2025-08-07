@@ -25,7 +25,8 @@ main();
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
-
+const methodOverride = require("method-override");
+app.use(methodOverride("_method"));
 // Session
 app.use(
   session({
@@ -79,7 +80,7 @@ app.post("/login", async (req, res) => {
     // res.render("dashboard", { user });
     res.redirect("/dashboard");
   } else {
-    res.send("Invalid Credentials");
+    res.render("login");
   }
 });
 // Dashboard route (protected)
@@ -105,10 +106,11 @@ app.get("/profile/:id", async (req, res) => {
 //Edit Profile GET
 app.get("/edit-profile/:id", async (req, res) => {
   let id = req.params.id;
-  let user = await User.findById(id);
+  let pet = await User.findById(id);
   // console.log(user);
-  res.render("edit-profile", { id });
+  res.render("edit-profile", { pet });
 });
+
 // Edit profile POST
 app.post("/edit-profile/:id", async (req, res) => {
   let id = req.params.id;
@@ -154,11 +156,34 @@ app.post("/edit-profile/:id", async (req, res) => {
   }
 });
 
-//Delete Profile -------------------////////////////////////////  Reaining
-app.delete("/delete-profile/:id", (req, res) => {
-  let id = req.params.id;
-  console.log(id);
-  res.send("Delete");
+//Delete Profile -------------------////////////////////////////  Remaining
+app.delete("/delete-profile/:id", async (req, res) => {
+  try {
+    await User.findByIdAndUpdate(req.params.id, {
+      $unset: {
+        ownerName: "",
+        phone: "",
+        address: "",
+        petName: "",
+        breed: "",
+        age: "",
+        gender: "",
+        species: "",
+        color: "",
+        dateOfBirth: "",
+        responsibleVet: "",
+        medicalHistory: "",
+        photo: "https://cdn-icons-png.flaticon.com/512/616/616408.png",
+      },
+    }).then((res) => {
+      console.log("User Deleted");
+    });
+
+    let pet = await User.findById(req.params.id);
+    res.render("profile.ejs", { pet });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // -------------------------------------------------------  Hospitals ----------------------------
@@ -188,6 +213,26 @@ app.post("/hospitals/find", async (req, res) => {
 //Animal Info Route
 app.get("/animal-info/cow-care", (req, res) => {
   res.render("cow-care.ejs");
+});
+app.get("/animal-info/buffalo-care", (req, res) => {
+  res.render("buffalo-care.ejs");
+});
+app.get("/animal-info/dog-care", (req, res) => {
+  res.render("dog-care.ejs");
+});
+app.get("/animal-info/cat-care", (req, res) => {
+  res.render("cat-care.ejs");
+});
+app.get("/animal-info/goat-care", (req, res) => {
+  res.render("goat-care.ejs");
+});
+app.get("/animal-info/birds-care", (req, res) => {
+  res.render("birds-care.ejs");
+});
+
+//Snake Rescue
+app.get("/petcare/snake-rescue", (req, res) => {
+  res.render("snake-rescue.ejs");
 });
 
 //Error Handling Middleware

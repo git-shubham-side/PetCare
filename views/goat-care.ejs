@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goat Care Dashboard - PetCare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+      .sidebar {
+        background: linear-gradient(180deg, #14b8a6, #0d9488);
+        color: white;
+        min-height: 100vh;
+      }
+      .sidebar a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 16px;
+        border-radius: 8px;
+        transition: background 0.3s;
+      }
+      .sidebar a:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      .card {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+      }
+      .card:hover {
+        transform: translateY(-6px);
+      }
+      .marathi {
+        color: #4b5563;
+        font-style: italic;
+        font-size: 0.95rem;
+        margin-top: 8px;
+      }
+    </style>
+  </head>
+  <body class="flex bg-gray-100 text-gray-800">
+    <!-- Sidebar -->
+    <aside class="sidebar w-64 p-6 fixed top-0 left-0">
+      <h1 class="text-2xl font-bold mb-8 flex items-center gap-2">
+        🐾 PetCare
+      </h1>
+      <nav class="space-y-3">
+        <a href="/animal-info/cow-care"><i class="ph ph-cow"></i> Cow Care</a>
+        <a href="/animal-info/buffalo-care"
+          ><i class="ph ph-cow"></i> Buffalo Care</a
+        >
+        <a href="/animal-info/dog-care"><i class="ph ph-dog"></i> Dog Care</a>
+        <a href="/animal-info/cat-care"><i class="ph ph-cat"></i> Cat Care</a>
+        <a
+          href="/animal-info/goat-care"
+          class="bg-white text-teal-700 font-semibold"
+          ><i class="ph ph-goat"></i> Goat Care</a
+        >
+        <a href="/animal-info/birds-care"
+          ><i class="ph ph-bird"></i> Birds Care</a
+        >
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="ml-64 w-full">
+      <header class="bg-white shadow-md p-4 flex items-center">
+        <div class="flex items-center justify-between w-full">
+          <h2 class="text-xl font-bold text-teal-700">Goat Care Dashboard</h2>
+          <a
+            href="/dashboard"
+            class="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition"
+            >Back</a
+          >
+        </div>
+      </header>
+
+      <section class="gradient-bg text-center py-10">
+        <h1 class="text-4xl font-bold text-teal-700 mb-3" data-aos="fade-up">
+          Goat Care
+        </h1>
+        <h1 class="text-4xl font-bold text-teal-700 mb-3" data-aos="fade-up">
+          शेळीची काळजी
+        </h1>
+        <p
+          class="text-gray-700 max-w-2xl mx-auto"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          Learn how to feed, shelter, groom, and keep your goats healthy and
+          productive.
+        </p>
+        <p class="marathi">
+          तुमच्या शेळ्यांचे खाणे, निवारा, स्वच्छता आणि आरोग्य राखण्याचे मार्ग
+          जाणून घ्या.
+        </p>
+      </section>
+
+      <section class="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="card" data-aos="zoom-in">
+          <h3 class="text-xl font-semibold text-teal-600 mb-4">
+            🩺 Vaccination Schedule
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>PPR and ET vaccine every 6 months</li>
+            <li>HS and FMD vaccines yearly</li>
+            <li>Deworming every 3 months</li>
+          </ul>
+          <p class="marathi">
+            पीपीआर आणि ईटी लस दर ६ महिन्यांनी <br />
+            एचएस आणि एफएमडी दरवर्षी <br />
+            दर ३ महिन्यांनी कृमिनाशक द्या
+          </p>
+        </div>
+
+        <div class="card" data-aos="zoom-in" data-aos-delay="100">
+          <h3 class="text-xl font-semibold text-green-600 mb-4">
+            🌿 Nutrition & Grazing
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Free grazing plus dry and green fodder</li>
+            <li>Mineral mixture in diet</li>
+            <li>Plenty of clean drinking water</li>
+          </ul>
+          <p class="marathi">
+            मोकळे चराई आणि कोरडे-हिरवे चारा <br />
+            आहारात खनिज मिश्रण <br />
+            भरपूर स्वच्छ पाणी द्या
+          </p>
+        </div>
+
+        <div class="card" data-aos="zoom-in" data-aos-delay="200">
+          <h3 class="text-xl font-semibold text-blue-600 mb-4">
+            🧼 Cleaning & Housing
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Clean shed regularly</li>
+            <li>Dry flooring to avoid hoof rot</li>
+            <li>Ventilation and protection from rain</li>
+          </ul>
+          <p class="marathi">
+            गोठा नियमित स्वच्छ ठेवा <br />
+            ओलसर न होता कोरडे जमिन <br />
+            हवा खेळती व पावसापासून संरक्षण
+          </p>
+        </div>
+
+        <div class="card" data-aos="zoom-in" data-aos-delay="300">
+          <h3 class="text-xl font-semibold text-orange-600 mb-4">
+            📈 Breeding & Productivity
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Proper age for breeding: 12-15 months</li>
+            <li>Record keeping of births and health</li>
+            <li>Regular weight monitoring</li>
+          </ul>
+          <p class="marathi">
+            योग्य वयात प्रजनन (१२-१५ महिने) <br />
+            जन्म व आरोग्याची नोंद ठेवा <br />
+            वजनाची नियमित तपासणी करा
+          </p>
+        </div>
+        <div class="card" data-aos="zoom-in" data-aos-delay="400">
+          <h3 class="text-xl font-semibold text-red-500 mb-4">
+            🦠 Common Diseases
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>PPR, FMD, Enterotoxemia, Mastitis</li>
+            <li>Signs: fever, swelling, loss of appetite</li>
+            <li>Regular health checks are important</li>
+          </ul>
+          <p class="marathi">
+            पीपीआर, एफएमडी, एंटरोटॉक्सिमिया, मस्टायटिस <br />
+            लक्षणे: ताप, सूज, भूक मंदावणे <br />
+            नियमित आरोग्य तपासणी आवश्यक
+          </p>
+        </div>
+
+        <!-- 6. Hoof Care -->
+        <div class="card" data-aos="zoom-in" data-aos-delay="500">
+          <h3 class="text-xl font-semibold text-yellow-600 mb-4">
+            🦶 Hoof Care
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Trim hooves every 4-6 weeks</li>
+            <li>Check for foot rot or infections</li>
+            <li>Keep the flooring dry and clean</li>
+          </ul>
+          <p class="marathi">
+            दर ४-६ आठवड्यांनी खुर trimmed करा <br />
+            पायांना सड किंवा जंतू तपासा <br />
+            कोरडी व स्वच्छ जमिनीची व्यवस्था ठेवा
+          </p>
+        </div>
+
+        <!-- 7. Heat Stress Management -->
+        <div class="card" data-aos="zoom-in" data-aos-delay="600">
+          <h3 class="text-xl font-semibold text-pink-600 mb-4">
+            🌞 Heat Stress
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Provide shade and cool water</li>
+            <li>Ensure proper airflow in sheds</li>
+            <li>Limit movement during peak heat</li>
+          </ul>
+          <p class="marathi">
+            सावली आणि थंड पाणी द्या <br />
+            गोठ्यांमध्ये योग्य वायुवीजन ठेवा <br />
+            फार उष्णतेत हालचाल मर्यादित ठेवा
+          </p>
+        </div>
+
+        <!-- 8. Kid Care -->
+        <div class="card" data-aos="zoom-in" data-aos-delay="700">
+          <h3 class="text-xl font-semibold text-purple-600 mb-4">
+            🐐 Kid Care
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Feed colostrum within 2 hours of birth</li>
+            <li>Keep warm and protected from wind</li>
+            <li>Vaccinate and deworm timely</li>
+          </ul>
+          <p class="marathi">
+            जन्मानंतर २ तासात कोलोस्ट्रम द्या <br />
+            उबदार ठेवा आणि वाऱ्यापासून वाचवा <br />
+            वेळेवर लसीकरण व कृमिनाशन करा
+          </p>
+        </div>
+
+        <!-- 9. Milking & Hygiene -->
+        <div class="card" data-aos="zoom-in" data-aos-delay="800">
+          <h3 class="text-xl font-semibold text-indigo-600 mb-4">
+            🥛 Milking & Hygiene
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Milk twice a day at fixed time</li>
+            <li>Clean udders before and after milking</li>
+            <li>Use clean vessels to store milk</li>
+          </ul>
+          <p class="marathi">
+            ठरलेल्या वेळेत दिवसातून दोन वेळा दूध काढा <br />
+            दूध काढण्याआधी व नंतर अंडर स्वच्छ करा <br />
+            स्वच्छ भांड्यांमध्ये दूध साठवा
+          </p>
+        </div>
+
+        <!-- 10. Seasonal Care -->
+        <div class="card" data-aos="zoom-in" data-aos-delay="900">
+          <h3 class="text-xl font-semibold text-gray-700 mb-4">
+            🌦️ Seasonal Care
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Rainy: Prevent damp flooring and infections</li>
+            <li>Winter: Provide bedding and shelter</li>
+            <li>Summer: Ensure shade and hydration</li>
+          </ul>
+          <p class="marathi">
+            पावसाळा: ओलसरपणा आणि संसर्ग टाळा <br />
+            हिवाळा: गादी व निवारा द्या <br />
+            उन्हाळा: सावली व भरपूर पाणी द्या
+          </p>
+        </div>
+      </section>
+
+      <section class="p-8">
+        <div class="card" data-aos="fade-up">
+          <h3 class="text-2xl font-bold text-red-600 mb-4">
+            🚨 Emergency Tips
+          </h3>
+          <p class="text-gray-700 mb-4">
+            In case of sudden weakness, wounds, or illness:
+          </p>
+          <p class="marathi">अचानक अशक्तपणा, जखम किंवा आजार झाल्यास:</p>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Consult a vet immediately</li>
+            <li>Separate the sick goat from others</li>
+            <li>Provide clean shelter and observe behavior</li>
+          </ul>
+          <p class="marathi">
+            तात्काळ पशुवैद्याची मदत घ्या <br />
+            आजारी शेळीला इतरांपासून वेगळं ठेवा <br />
+            स्वच्छ निवारा द्या आणि वर्तन पाहा
+          </p>
+        </div>
+      </section>
+
+      <footer class="bg-gray-800 text-white text-center py-4">
+        <p>
+          &copy; <%= new Date().getFullYear() %> PetCare. All Rights Reserved.
+        </p>
+      </footer>
+    </main>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 1200, once: true });
+    </script>
+  </body>
+</html>

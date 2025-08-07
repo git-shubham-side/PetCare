@@ -47,10 +47,10 @@
         <p><strong>Address:</strong> <%= h.address %></p>
         <p><strong>Contact:</strong> <%= h.contact %></p>
         <p><strong>Email:</strong> <%= h.email %></p>
-        <p><strong>Services:</strong></p>
-        <% for (let s of h.services) { %> <%= s %>, <% } %>
-        <br />
-        <br />
+        <p>
+          <strong>Services:</strong> <% for (let s of h.services) { %> <%= s %>,
+          <% } %>
+        </p>
         <p>
           <strong>Website:</strong>
           <% if (h.website && h.website !== "N/A") { %>

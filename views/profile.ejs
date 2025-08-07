@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= pet.petName %>'s Profile</title>
+    <title>Your Pet's Profile</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/css/profile.css" />
   </head>
@@ -47,7 +47,7 @@
               class="text-3xl font-extrabold text-gray-800 mb-4 flex items-center justify-center sm:justify-start"
             >
               <i> <%= pet.petName %></i>
-              <span class="ml-2 text-2xl"><%= pet.emoji %></span>
+              <span class="ml-2 text-2xl"><%= pet.emoji%></span>
             </h1>
             <div
               class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700 text-lg"
@@ -94,7 +94,10 @@
                   Edit Details
                 </button>
               </form>
-              <form action="/delete-profile/<%= pet._id %>" method="get">
+              <form
+                action="/delete-profile/<%= pet._id  %>?_method=DELETE"
+                method="post"
+              >
                 <button
                   type="submit"
                   class="btn-custom bg-red-500 hover:bg-red-600"

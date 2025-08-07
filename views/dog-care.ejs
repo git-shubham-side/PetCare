@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dog Care Dashboard - PetCare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+      .sidebar {
+        background: linear-gradient(180deg, #14b8a6, #0d9488);
+        color: white;
+        min-height: 100vh;
+      }
+      .sidebar a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 16px;
+        border-radius: 8px;
+        transition: background 0.3s;
+      }
+      .sidebar a:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      .card {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+      }
+      .card:hover {
+        transform: translateY(-6px);
+      }
+      .marathi {
+        color: #4b5563;
+        font-style: italic;
+        font-size: 0.95rem;
+        margin-top: 8px;
+      }
+    </style>
+  </head>
+  <body class="flex bg-gray-100 text-gray-800">
+    <!-- Sidebar -->
+    <aside class="sidebar w-64 p-6 fixed top-0 left-0">
+      <h1 class="text-2xl font-bold mb-8 flex items-center gap-2">
+        🐾 PetCare
+      </h1>
+      <nav class="space-y-3">
+        <a href="/animal-info/cow-care"><i class="ph ph-cow"></i> Cow Care</a>
+        <a href="/animal-info/buffalo-care"
+          ><i class="ph ph-cow"></i> Buffalo Care</a
+        >
+        <a
+          href="/animal-info/dog-care"
+          class="bg-white text-teal-700 font-semibold"
+          ><i class="ph ph-dog"></i> Dog Care</a
+        >
+        <a href="/animal-info/cat-care"><i class="ph ph-cat"></i> Cat Care</a>
+        <a href="/animal-info/goat-care"
+          ><i class="ph ph-goat"></i> Goat Care</a
+        >
+        <a href="/animal-info/birds-care"
+          ><i class="ph ph-bird"></i> Birds Care</a
+        >
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="ml-64 w-full">
+      <!-- Header -->
+      <header class="bg-white shadow-md p-4 flex items-center">
+        <div class="flex items-center justify-between w-full">
+          <div>
+            <h2 class="text-xl font-bold text-teal-700">Dog Care Dashboard</h2>
+          </div>
+          <div>
+            <a
+              href="/dashboard"
+              class="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition"
+              >Back</a
+            >
+          </div>
+        </div>
+      </header>
+
+      <!-- Hero -->
+      <section class="gradient-bg text-center py-10">
+        <h1 class="text-4xl font-bold text-teal-700 mb-3" data-aos="fade-up">
+          Dog Care
+        </h1>
+        <h1 class="text-4xl font-bold text-teal-700 mb-3" data-aos="fade-up">
+          कुत्र्याची काळजी
+        </h1>
+        <p
+          class="text-gray-700 max-w-2xl mx-auto"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          A comprehensive guide for caring for your dog including feeding,
+          grooming, vaccinations, training, and health monitoring.
+        </p>
+        <p class="marathi">
+          तुमच्या कुत्र्याची काळजी घेण्यासाठी खाणे, स्वच्छता, लसीकरण, प्रशिक्षण
+          आणि आरोग्य निरीक्षण यासाठी संपूर्ण मार्गदर्शक.
+        </p>
+      </section>
+
+      <!-- Dashboard Cards -->
+      <section class="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Vaccination -->
+        <div class="card" data-aos="zoom-in">
+          <h3 class="text-xl font-semibold text-teal-600 mb-4">
+            ✅ Vaccination Schedule
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Rabies: Yearly</li>
+            <li>DHPPi: Every 3 years after initial doses</li>
+            <li>Leptospirosis: Yearly</li>
+            <li>Kennel Cough: Yearly or as advised</li>
+          </ul>
+          <p class="marathi">
+            रेबीज: दरवर्षी <br />
+            डीएचपीपीआय: सुरुवातीच्या डोसनंतर प्रत्येक ३ वर्षांनी <br />
+            लेप्टोस्पायरोसिस: दरवर्षी <br />
+            केनेल कफ: दरवर्षी किंवा सल्ल्यानुसार
+          </p>
+        </div>
+
+        <!-- Nutrition -->
+        <div class="card" data-aos="zoom-in" data-aos-delay="100">
+          <h3 class="text-xl font-semibold text-green-600 mb-4">
+            🍗 Nutrition & Feeding
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>High-quality protein-based food</li>
+            <li>Fresh water access 24/7</li>
+            <li>Avoid chocolate, onion, garlic</li>
+            <li>Feed according to breed size & age</li>
+          </ul>
+          <p class="marathi">
+            उच्च दर्जाचे प्रोटीनयुक्त अन्न द्या <br />
+            २४/७ ताजे पाणी उपलब्ध ठेवा <br />
+            चॉकलेट, कांदा, लसूण टाळा <br />
+            जातीच्या आकार व वयाप्रमाणे आहार द्या
+          </p>
+        </div>
+
+        <!-- Grooming -->
+        <div class="card" data-aos="zoom-in" data-aos-delay="200">
+          <h3 class="text-xl font-semibold text-blue-600 mb-4">
+            🧼 Grooming & Hygiene
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Weekly brushing for all breeds</li>
+            <li>Bath once every 2–4 weeks</li>
+            <li>Clean ears and trim nails regularly</li>
+            <li>Use tick/flea prevention products</li>
+          </ul>
+          <p class="marathi">
+            सर्व जातींसाठी आठवड्यातून एकदा ब्रश करा <br />
+            दर २–४ आठवड्यांनी अंघोळ करा <br />
+            कान साफ करा आणि नखं वेळेवर कापा <br />
+            गोचिड/कोरडा टाळण्यासाठी उपाय वापरा
+          </p>
+        </div>
+
+        <!-- Training -->
+        <div class="card" data-aos="zoom-in" data-aos-delay="300">
+          <h3 class="text-xl font-semibold text-purple-600 mb-4">
+            🎓 Training & Behavior
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Start training from young age</li>
+            <li>Use positive reinforcement</li>
+            <li>Daily walk and playtime needed</li>
+            <li>Socialize with other pets and people</li>
+          </ul>
+          <p class="marathi">
+            लहानपणापासून प्रशिक्षण सुरू करा <br />
+            सकारात्मक बक्षीस प्रणाली वापरा <br />
+            रोज फिरवा व खेळवा <br />
+            इतर प्राण्यांशी व लोकांशी सवयीचे करा
+          </p>
+        </div>
+
+        <!-- Housing -->
+        <div class="card" data-aos="zoom-in" data-aos-delay="400">
+          <h3 class="text-xl font-semibold text-orange-600 mb-4">
+            🏠 Shelter & Comfort
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Dry, clean, and shaded resting area</li>
+            <li>Keep indoors during extreme weather</li>
+            <li>Comfortable bedding</li>
+            <li>Avoid chaining for long hours</li>
+          </ul>
+          <p class="marathi">
+            कोरडे, स्वच्छ आणि सावलीचे विश्रांती क्षेत्र असावे <br />
+            जास्त उष्ण किंवा थंड हवामानात घरात ठेवा <br />
+            आरामदायक अंथरुण द्या <br />
+            दीर्घ वेळ जखडून ठेवू नका
+          </p>
+        </div>
+
+        <!-- Common Health Issues -->
+        <div class="card" data-aos="zoom-in" data-aos-delay="500">
+          <h3 class="text-xl font-semibold text-red-600 mb-4">
+            ⚠️ Common Health Issues
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Parvovirus: Highly contagious</li>
+            <li>Distemper: Neurological effects</li>
+            <li>Ear infections: Check regularly</li>
+            <li>Worms: Deworm every 3 months</li>
+          </ul>
+          <p class="marathi">
+            पार्वोव्हायरस: अतिशय संसर्गजन्य <br />
+            डिस्टेंपर: मेंदूवर परिणाम होतो <br />
+            कानांचे संसर्ग: नियमित तपासा <br />
+            कृमी: दर ३ महिन्यांनी औषध द्या
+          </p>
+        </div>
+      </section>
+
+      <!-- Emergency Tips -->
+      <section class="p-8">
+        <div class="card" data-aos="fade-up">
+          <h3 class="text-2xl font-bold text-red-600 mb-4">
+            🚨 Emergency Care Tips
+          </h3>
+          <p class="text-gray-700 mb-4">
+            If your dog is vomiting, has diarrhea, difficulty breathing, or
+            behaving unusually:
+          </p>
+          <p class="marathi">
+            जर तुमचा कुत्रा उलटी करत असेल, जुलाब, श्वास घेण्यास त्रास होत असेल
+            किंवा विचित्र वागू लागल्यास:
+          </p>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Contact a vet immediately.</li>
+            <li>Keep the pet in a quiet, safe place.</li>
+            <li>Don’t give human medicines without vet advice.</li>
+          </ul>
+          <p class="marathi">
+            तात्काळ पशुवैद्याशी संपर्क साधा <br />
+            पाळीव प्राणी शांत व सुरक्षित जागी ठेवा <br />
+            पशुवैद्यांच्या सल्ल्याशिवाय मानवी औषधे देऊ नका
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-gray-800 text-white text-center py-4">
+        <p>
+          &copy; <%= new Date().getFullYear() %> PetCare. All Rights Reserved.
+        </p>
+      </footer>
+    </main>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 1200, once: true });
+    </script>
+  </body>
+</html>

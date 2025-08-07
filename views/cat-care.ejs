@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cat Care Dashboard - PetCare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+      .sidebar {
+        background: linear-gradient(180deg, #14b8a6, #0d9488);
+        color: white;
+        min-height: 100vh;
+      }
+      .sidebar a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 16px;
+        border-radius: 8px;
+        transition: background 0.3s;
+      }
+      .sidebar a:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      .card {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+      }
+      .card:hover {
+        transform: translateY(-6px);
+      }
+      .marathi {
+        color: #4b5563;
+        font-style: italic;
+        font-size: 0.95rem;
+        margin-top: 8px;
+      }
+    </style>
+  </head>
+  <body class="flex bg-gray-100 text-gray-800">
+    <!-- Sidebar -->
+    <aside class="sidebar w-64 p-6 fixed top-0 left-0">
+      <h1 class="text-2xl font-bold mb-8 flex items-center gap-2">
+        🐾 PetCare
+      </h1>
+      <nav class="space-y-3">
+        <a href="/animal-info/cow-care"><i class="ph ph-cow"></i> Cow Care</a>
+        <a href="/animal-info/buffalo-care"
+          ><i class="ph ph-cow"></i> Buffalo Care</a
+        >
+        <a href="/animal-info/dog-care"><i class="ph ph-dog"></i> Dog Care</a>
+        <a
+          href="/animal-info/cat-care"
+          class="bg-white text-teal-700 font-semibold"
+          ><i class="ph ph-cat"></i> Cat Care</a
+        >
+        <a href="/animal-info/goat-care"
+          ><i class="ph ph-goat"></i> Goat Care</a
+        >
+        <a href="/animal-info/birds-care"
+          ><i class="ph ph-bird"></i> Birds Care</a
+        >
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="ml-64 w-full">
+      <!-- Header -->
+      <header class="bg-white shadow-md p-4 flex items-center">
+        <div class="flex items-center justify-between w-full">
+          <div>
+            <h2 class="text-xl font-bold text-teal-700">Cat Care Dashboard</h2>
+          </div>
+          <div>
+            <a
+              href="/dashboard"
+              class="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition"
+              >Back</a
+            >
+          </div>
+        </div>
+      </header>
+
+      <!-- Hero -->
+      <section class="gradient-bg text-center py-10">
+        <h1 class="text-4xl font-bold text-teal-700 mb-3" data-aos="fade-up">
+          Cat Care
+        </h1>
+        <h1 class="text-4xl font-bold text-teal-700 mb-3" data-aos="fade-up">
+          मांजरीची काळजी
+        </h1>
+        <p
+          class="text-gray-700 max-w-2xl mx-auto"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          Essential tips for feeding, grooming, vaccinations, shelter, and
+          health check-ups for your cat.
+        </p>
+        <p class="marathi">
+          तुमच्या मांजरीसाठी खाणे, स्वच्छता, लसीकरण, निवारा आणि आरोग्य
+          तपासणीसाठी आवश्यक टिप्स.
+        </p>
+      </section>
+
+      <!-- Dashboard Cards -->
+      <section class="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Vaccination -->
+        <div class="card" data-aos="zoom-in">
+          <h3 class="text-xl font-semibold text-teal-600 mb-4">
+            ✅ Vaccination Schedule
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Rabies: Annually</li>
+            <li>FVRCP: Yearly booster</li>
+            <li>Feline Leukemia: Annually if at risk</li>
+          </ul>
+          <p class="marathi">
+            रेबीज: दरवर्षी <br />
+            एफव्हीआरसीपी: दरवर्षी बूस्टर <br />
+            फेलिन ल्युकेमिया: जोखमीच्या परिस्थितीत दरवर्षी
+          </p>
+        </div>
+
+        <!-- Nutrition -->
+        <div class="card" data-aos="zoom-in" data-aos-delay="100">
+          <h3 class="text-xl font-semibold text-green-600 mb-4">
+            🍗 Nutrition & Feeding
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>High protein, grain-free diet</li>
+            <li>Fresh water always available</li>
+            <li>No milk or spicy food</li>
+            <li>Portion control based on weight</li>
+          </ul>
+          <p class="marathi">
+            उच्च प्रथिने व धान्यरहित आहार <br />
+            ताजे पाणी नेहमी उपलब्ध <br />
+            दूध व मसालेदार अन्न टाळा <br />
+            वजनानुसार आहाराचे प्रमाण ठरवा
+          </p>
+        </div>
+
+        <!-- Grooming -->
+        <div class="card" data-aos="zoom-in" data-aos-delay="200">
+          <h3 class="text-xl font-semibold text-blue-600 mb-4">
+            🧼 Grooming & Hygiene
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Weekly brushing (daily for long-haired cats)</li>
+            <li>Clean litter box daily</li>
+            <li>Trim nails every few weeks</li>
+            <li>Ear and eye cleaning as needed</li>
+          </ul>
+          <p class="marathi">
+            आठवड्यातून एकदा ब्रश करा (लांब केसांसाठी दररोज) <br />
+            लिटर बॉक्स दररोज स्वच्छ करा <br />
+            दर काही आठवड्यांनी नखं कापा <br />
+            आवश्यकतेनुसार कान व डोळे स्वच्छ करा
+          </p>
+        </div>
+
+        <!-- Housing -->
+        <div class="card" data-aos="zoom-in" data-aos-delay="300">
+          <h3 class="text-xl font-semibold text-orange-600 mb-4">
+            🏠 Shelter & Comfort
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Safe and quiet indoor space</li>
+            <li>Soft bedding and perch spots</li>
+            <li>Keep away from loud noises</li>
+            <li>Provide vertical climbing options</li>
+          </ul>
+          <p class="marathi">
+            सुरक्षित व शांत घरातील जागा <br />
+            मऊ अंथरुण व बसण्यासाठी जागा <br />
+            मोठ्या आवाजांपासून दूर ठेवा <br />
+            चढण्यासाठी उंचीची साधने द्या
+          </p>
+        </div>
+
+        <!-- Health Monitoring -->
+        <div class="card" data-aos="zoom-in" data-aos-delay="400">
+          <h3 class="text-xl font-semibold text-red-600 mb-4">
+            🩺 Health Monitoring
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Annual vet check-ups</li>
+            <li>Watch for vomiting or behavior change</li>
+            <li>Deworming every 3 months</li>
+            <li>Check for fleas or ticks</li>
+          </ul>
+          <p class="marathi">
+            दरवर्षी पशुवैद्य तपासणी <br />
+            उलटी किंवा वर्तनातील बदल पहा <br />
+            दर ३ महिन्यांनी कृमिनाशक <br />
+            पिसवा किंवा गोचिड तपासा
+          </p>
+        </div>
+      </section>
+
+      <!-- Emergency Tips -->
+      <section class="p-8">
+        <div class="card" data-aos="fade-up">
+          <h3 class="text-2xl font-bold text-red-600 mb-4">
+            🚨 Emergency Care Tips
+          </h3>
+          <p class="text-gray-700 mb-4">
+            If your cat shows signs of weakness, difficulty breathing, or sudden
+            aggression:
+          </p>
+          <p class="marathi">
+            जर तुमची मांजरी अशक्तपणा, श्वास घेताना अडचण किंवा अचानक आक्रमक वर्तन
+            दाखवत असेल:
+          </p>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Contact a vet immediately.</li>
+            <li>Keep your pet calm and comfortable.</li>
+            <li>Do not administer human medicine.</li>
+          </ul>
+          <p class="marathi">
+            तात्काळ पशुवैद्याशी संपर्क साधा <br />
+            मांजरीला शांत व आरामदायक ठेवा <br />
+            मानवी औषधे देऊ नका
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-gray-800 text-white text-center py-4">
+        <p>
+          &copy; <%= new Date().getFullYear() %> PetCare. All Rights Reserved.
+        </p>
+      </footer>
+    </main>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 1200, once: true });
+    </script>
+  </body>
+</html>
