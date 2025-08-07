@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cow Care Dashboard - PetCare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+      .sidebar {
+        background: linear-gradient(180deg, #14b8a6, #0d9488);
+        color: white;
+        min-height: 100vh;
+      }
+      .sidebar a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 16px;
+        border-radius: 8px;
+        transition: background 0.3s;
+      }
+      .sidebar a:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+      .card {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+      }
+      .card:hover {
+        transform: translateY(-6px);
+      }
+      .marathi {
+        color: #4b5563;
+        font-style: italic;
+        font-size: 0.95rem;
+        margin-top: 8px;
+      }
+    </style>
+  </head>
+  <body class="flex bg-gray-100 text-gray-800">
+    <!-- Sidebar -->
+    <aside class="sidebar w-64 p-6 fixed top-0 left-0">
+      <h1 class="text-2xl font-bold mb-8 flex items-center gap-2">
+        🐾 PetCare
+      </h1>
+      <nav class="space-y-3">
+        <a href="/" class="hover:bg-teal-700"
+          ><i class="ph ph-house"></i> Dashboard</a
+        >
+        <a
+          href="/animal-info/cow-care"
+          class="bg-white text-teal-700 font-semibold"
+          ><i class="ph ph-cow"></i> Cow Care</a
+        >
+        <a href="/animal-info/buffalo-care"
+          ><i class="ph ph-butterfly"></i> Buffalo Care</a
+        >
+        <a href="/animal-info/dog-care"><i class="ph ph-dog"></i> Dog Care</a>
+        <a href="/animal-info/cat-care"><i class="ph ph-cat"></i> Cat Care</a>
+        <a href="/animal-info/goat-care">
+          <i class="ph ph-goat"></i> Goat Care</a
+        >
+        <a href="/animal-info/birds-care"
+          ><i class="ph ph-bird"></i> Birds Care</a
+        >
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="ml-64 w-full">
+      <!-- Header -->
+      <header class="bg-white shadow-md p-4 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+          <a
+            href="/dashboard"
+            class="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition"
+          >
+            Back
+          </a>
+          <h2 class="text-xl font-bold text-teal-700">Cow Care Dashboard</h2>
+        </div>
+      </header>
+
+      <!-- Hero -->
+      <section class="gradient-bg text-center py-10">
+        <h1 class="text-4xl font-bold text-teal-700 mb-3" data-aos="fade-up">
+          Cow Care
+        </h1>
+        <h1 class="text-4xl font-bold text-teal-700 mb-3" data-aos="fade-up">
+          गायीची काळजी
+        </h1>
+        <p
+          class="text-gray-700 max-w-2xl mx-auto"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          A complete guide for cow health, nutrition, grooming, pregnancy care,
+          housing, and disease management.
+        </p>
+        <p class="marathi">
+          गायींच्या आरोग्य, पोषण, स्वच्छता, गर्भधारणा काळजी, निवास आणि आजार
+          व्यवस्थापनासाठी संपूर्ण मार्गदर्शक.
+        </p>
+      </section>
+
+      <!-- Dashboard Cards -->
+      <section class="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Vaccination -->
+        <div class="card" data-aos="zoom-in">
+          <h3 class="text-xl font-semibold text-teal-600 mb-4">
+            ✅ Vaccination Schedule
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>FMD: Every 6 months</li>
+            <li>Brucellosis: Once in lifetime (female calves)</li>
+            <li>Black Quarter & HS: Yearly</li>
+            <li>Theileriosis: As per vet advice</li>
+          </ul>
+          <p class="marathi">
+            एफएमडी: दर ६ महिन्यांनी <br />
+            ब्रुसेलोसिस: आयुष्यात एकदाच (मादी वासरांसाठी) <br />
+            ब्लॅक क्वार्टर आणि एचएस: वर्षातून एकदा <br />
+            थिलेरिओसिस: पशुवैद्यकीय सल्ल्यानुसार
+          </p>
+        </div>
+
+        <!-- Nutrition -->
+        <div class="card" data-aos="zoom-in" data-aos-delay="100">
+          <h3 class="text-xl font-semibold text-green-600 mb-4">
+            🥛 Nutrition & Feeding
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Green Fodder: 15–20 kg/day</li>
+            <li>Dry Fodder: 4–6 kg/day</li>
+            <li>Mineral Mixture daily</li>
+            <li>Concentrates: 1kg per 2.5L milk</li>
+          </ul>
+          <p class="marathi">
+            हिरवा चारा: १५–२० किलो/दिवस <br />
+            कोरडा चारा: ४–६ किलो/दिवस <br />
+            मिनरल मिक्स दररोज द्या <br />
+            कंसंट्रेट: प्रत्येक २.५ लिटर दुधासाठी १ किलो
+          </p>
+        </div>
+
+        <!-- Grooming -->
+        <div class="card" data-aos="zoom-in" data-aos-delay="200">
+          <h3 class="text-xl font-semibold text-blue-600 mb-4">
+            🧼 Grooming & Hygiene
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Daily brushing to remove dirt</li>
+            <li>Clean water for drinking & washing</li>
+            <li>Hoof trimming every 3–4 months</li>
+            <li>Disinfect shed weekly</li>
+          </ul>
+          <p class="marathi">
+            घाण काढण्यासाठी रोज ब्रश करा <br />
+            पिण्यासाठी व धुण्यासाठी स्वच्छ पाणी द्या <br />
+            दर ३–४ महिन्यांनी खुर कापणी करा <br />
+            गोठा आठवड्यातून एकदा निर्जंतुक करा
+          </p>
+        </div>
+
+        <!-- Pregnancy -->
+        <div class="card" data-aos="zoom-in" data-aos-delay="300">
+          <h3 class="text-xl font-semibold text-purple-600 mb-4">
+            🤰 Pregnancy Care
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Special diet during last 2 months</li>
+            <li>Provide clean bedding</li>
+            <li>Call vet at calving signs</li>
+          </ul>
+          <p class="marathi">
+            शेवटच्या २ महिन्यात विशेष आहार द्या <br />
+            स्वच्छ अंथरुण द्या <br />
+            प्रसूतीची चिन्हे दिसल्यास तातडीने पशुवैद्य बोलवा
+          </p>
+        </div>
+
+        <!-- Housing -->
+        <div class="card" data-aos="zoom-in" data-aos-delay="400">
+          <h3 class="text-xl font-semibold text-orange-600 mb-4">
+            🏠 Housing & Comfort
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Provide ventilation & sunlight</li>
+            <li>Clean and dry floor</li>
+            <li>Avoid overcrowding</li>
+            <li>Use bedding in winter</li>
+          </ul>
+          <p class="marathi">
+            वायुवीजन व सूर्यप्रकाश मिळेल अशी व्यवस्था करा <br />
+            स्वच्छ व कोरडी जमीन ठेवा <br />
+            गर्दी टाळा <br />
+            हिवाळ्यात अंथरुण वापरा
+          </p>
+        </div>
+
+        <!-- Common Diseases -->
+        <div class="card" data-aos="zoom-in" data-aos-delay="500">
+          <h3 class="text-xl font-semibold text-red-600 mb-4">
+            ⚠️ Common Diseases
+          </h3>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Mastitis: Swollen udder, needs antibiotics</li>
+            <li>Foot & Mouth: High fever, ulcers on mouth</li>
+            <li>Bloat: Emergency condition</li>
+            <li>Tick Infestation: Use anti-tick spray</li>
+          </ul>
+          <p class="marathi">
+            मास्टायटीस: स्तन सूजणे, अँटीबायोटिक आवश्यक <br />
+            तोंड-खुर रोग: जास्त ताप, तोंडात जखमा <br />
+            गॅस होणे: तातडीची अवस्था <br />
+            गोचिड संसर्ग: अँटी-टिक स्प्रे वापरा
+          </p>
+        </div>
+      </section>
+
+      <!-- Emergency Tips -->
+      <section class="p-8">
+        <div class="card" data-aos="fade-up">
+          <h3 class="text-2xl font-bold text-red-600 mb-4">
+            🚨 Emergency Care Tips
+          </h3>
+          <p class="text-gray-700 mb-4">
+            If your cow shows symptoms like loss of appetite, fever, swelling,
+            or abnormal behavior:
+          </p>
+          <p class="marathi">
+            जर तुमच्या गायीला भूक न लागणे, ताप, सूज, किंवा विचित्र वर्तन दिसले
+            तर:
+          </p>
+          <ul class="list-disc pl-6 text-gray-700 space-y-2">
+            <li>Isolate the sick animal immediately.</li>
+            <li>Provide clean water and shade.</li>
+            <li>Call a qualified veterinarian ASAP.</li>
+          </ul>
+          <p class="marathi">
+            आजारी जनावर तात्काळ वेगळे करा <br />
+            स्वच्छ पाणी व सावली द्या <br />
+            लवकरात लवकर पशुवैद्य बोलवा
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-gray-800 text-white text-center py-4">
+        <p>
+          &copy; <%= new Date().getFullYear() %> PetCare. All Rights Reserved.
+        </p>
+      </footer>
+    </main>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 1200, once: true });
+    </script>
+  </body>
+</html>

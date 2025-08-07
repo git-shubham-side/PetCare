@@ -5,11 +5,12 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
-const User = require("./models/login.js");
-
-const PORT = 8080;
-const dotenv=require('dotenv').config();
-
+const User = require("./models/login.js"); //User Database
+const Hospital = require("./models/hospitals.js"); //Hospital database
+const PORT = 3000;
+const dotenv = require("dotenv").config();
+const path = require("path");
+app.use(express.static(path.join(__dirname, "public")));
 // Connect MongoDB
 async function main() {
   try {
@@ -90,10 +91,10 @@ app.get("/dashboard", isAuthenticated, async (req, res) => {
 //Profile--------------------------
 app.get("/profile/:id", async (req, res) => {
   let id = req.params.id;
-  console.log(id);
+  // console.log(id);
   try {
     let user = await User.findById(id);
-    console.log(user);
+    // console.log(user);
     const pet = user;
     res.render("profile", { pet });
   } catch (err) {
@@ -125,6 +126,8 @@ app.post("/edit-profile/:id", async (req, res) => {
     owner,
     phone,
     address,
+    district,
+    state,
   } = req.body;
   try {
     await User.findByIdAndUpdate(id, {
@@ -141,13 +144,54 @@ app.post("/edit-profile/:id", async (req, res) => {
       ownerName: owner,
       phone: phone,
       address: address,
+      district: district,
+      state: state,
     });
     console.log("user Updated");
     res.redirect("/dashboard");
   } catch (err) {
-    cosnsole.log(err);
+    console.log(err);
   }
 });
+
+//Delete Profile -------------------////////////////////////////  Reaining
+app.delete("/delete-profile/:id", (req, res) => {
+  let id = req.params.id;
+  console.log(id);
+  res.send("Delete");
+});
+
+// -------------------------------------------------------  Hospitals ----------------------------
+
+//Hosptial Finding Route
+app.get("/hospitals", async (req, res) => {
+  try {
+    let hospital = await Hospital.find({});
+    res.render("hospitals.ejs", { hospital });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internel error");
+  }
+});
+app.post("/hospitals/find", async (req, res) => {
+  let { district } = req.body;
+  try {
+    let hospital = await Hospital.find({ dist: district });
+    res.render("hospitals.ejs", { hospital });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internel error");
+  }
+  console.log(req.body);
+});
+
+//Animal Info Route
+app.get("/animal-info/cow-care", (req, res) => {
+  res.render("cow-care.ejs");
+});
+
+//Error Handling Middleware
+// app.use((err, req, res, next) => {});
 app.listen(PORT || process.env.PORT, () => {
   console.log("Server is running!");
 });

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hospitals - PetCare</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/css/hospital.css" />
+  </head>
+  <body>
+    <div class="header-bar d-flex justify-content-between align-items-center">
+      <div>🐾 PetCare</div>
+      <a href="/dashboard">← Back to Home</a>
+    </div>
+
+    <div class="container mt-4">
+      <h2>Find the Best Hospitals for Your Pets</h2>
+
+      <!-- Filter -->
+      <form method="post" action="/hospitals/find" class="mb-4 text-center">
+        <div class="row justify-content-center">
+          <div class="col-md-4">
+            <select name="district" class="form-select mb-3">
+              <option value="">Choose your District</option>
+              <option value="Nanded">Nanded</option>
+              <option value="Parbhani">Parbhani</option>
+              <option value="Latur">Latur</option>
+              <option value="Sambhaji-nagar">Sambhaji Nagar</option>
+              <option value="Pune">Pune</option>
+              <option value="Nashik">Nashik</option>
+              <option value="Mumbai">Mumbai</option>
+            </select>
+            <button class="show-btn" type="submit">Show</button>
+          </div>
+        </div>
+      </form>
+
+      <% if (hospital && hospital.length > 0) { %> <%
+      hospital.forEach(function(h) { %>
+      <div class="hospital-card">
+        <h3><%= h.hospitalName %></h3>
+        <p><strong>Type:</strong> <%= h.hospitalType %></p>
+        <p><strong>District:</strong> <%= h.dist %></p>
+        <p><strong>Address:</strong> <%= h.address %></p>
+        <p><strong>Contact:</strong> <%= h.contact %></p>
+        <p><strong>Email:</strong> <%= h.email %></p>
+        <p><strong>Services:</strong></p>
+        <% for (let s of h.services) { %> <%= s %>, <% } %>
+        <br />
+        <br />
+        <p>
+          <strong>Website:</strong>
+          <% if (h.website && h.website !== "N/A") { %>
+          <a href="<%= h.website %>" target="_blank"><%= h.website %></a>
+          <% } else { %> N/A <% } %>
+        </p>
+        <p><strong>Opening Hours:</strong> <%= h.opening_hours %></p>
+        <div class="mt-3 d-flex flex-wrap gap-2">
+          <a href="/book-appointment/<%= h._id %>" class="btn btn-success"
+            >Book Appointment</a
+          >
+          <a href="/report-issue/<%= h._id %>" class="btn btn-danger"
+            >Report Issue</a
+          >
+        </div>
+      </div>
+      <% }) %> <% } else { %>
+      <p class="text-center text-muted mt-5">No hospitals found.</p>
+      <% } %>
+    </div>
+  </body>
+</html>

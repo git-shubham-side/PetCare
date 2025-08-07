@@ -3,99 +3,103 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= pet.Name %>'s Profile</title>
-    <!-- Tailwind CSS CDN -->
+    <title><%= pet.petName %>'s Profile</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-        background-color: #f0f2f5;
-      }
-    </style>
+    <link rel="stylesheet" href="/css/profile.css" />
   </head>
   <body class="p-0">
     <!-- Navbar -->
     <nav class="bg-teal-500 p-4 shadow-md">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
         <div class="flex items-center">
-          <span class="text-xl font-bold text-white">&#128062;PetCare</span>
+          <span class="text-xl font-bold text-white">
+            <a href="/dashboard">&#128062; PetCare</a>
+          </span>
         </div>
-        <a href="/dashboard" class="text-white hover:underline text-m"
-          >← Back to Home</a
-        >
+        <a href="/dashboard" class="text-white text-lg"> ← Back to Home </a>
       </div>
     </nav>
 
-    <div class="p-4 sm:p-6 md:p-8 lg:p-10">
+    <!-- Main Container -->
+    <div class="p-6 md:p-10">
+      <!-- Pet Details Card -->
       <div
-        class="max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-6 sm:p-8 mb-8"
+        class="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg p-8 mb-8 card-hover"
       >
         <div
-          class="flex flex-col sm:flex-row items-center sm:items-start space-y-6 sm:space-y-0 sm:space-x-8"
+          class="flex flex-col sm:flex-row items-center sm:items-start gap-8"
         >
           <!-- Pet Image -->
-          <div class="w-32 h-32 sm:w-40 sm:h-40 flex-shrink-0">
+          <div
+            class="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-teal-300 shadow-lg"
+          >
             <img
-              src="<%= pet.photo%>"
+              src="<%= pet.photo %>"
               alt="petImage"
-              class="w-full h-full object-cover rounded-full border-4 border-blue-200 shadow-md"
-              onerror="this.onerror=null;this.src='https://placehold.co/160x160/cccccc/333333?text=Pet+Image';"
+              class="w-full h-full object-cover"
+              onerror="this.onerror=null;this.src='https://placehold.co/200x200/cccccc/333333?text=Pet+Image';"
             />
           </div>
 
-          <!-- Pet Details -->
+          <!-- Pet Info -->
           <div class="flex-grow text-center sm:text-left">
             <h1
-              class="text-3xl sm:text-4xl font-bold text-gray-900 mb-2 flex items-center justify-center sm:justify-start"
+              class="text-3xl font-extrabold text-gray-800 mb-4 flex items-center justify-center sm:justify-start"
             >
-              <%= pet.petName %>
-              <span class="ml-2 text-2xl" role="img" aria-label="dog emoji"
-                ><%= pet.emoji %></span
-              >
+              <i> <%= pet.petName %></i>
+              <span class="ml-2 text-2xl"><%= pet.emoji %></span>
             </h1>
-            <p class="text-gray-700 text-lg mb-1">
-              <span class="font-semibold">Breed:</span> <%= pet.breed %>
-            </p>
-            <p class="text-gray-700 text-lg mb-1">
-              <span class="font-semibold">Age:</span> <%= pet.age %> Years
-            </p>
-            <p class="text-gray-700 text-lg mb-1">
-              <span class="font-semibold">Gender:</span> <%= pet.gender %>
-            </p>
-            <p class="text-gray-700 text-lg mb-1">
-              <span class="font-semibold">Species:</span> <%= pet.species %>
-            </p>
-            <p class="text-gray-700 text-lg mb-1">
-              <span class="font-semibold">Color:</span> <%= pet.color %>
-            </p>
-            <p class="text-gray-700 text-lg mb-1">
-              <span class="font-semibold">Date of birth:</span> <%=
-              pet.dateOfBirth %>
-            </p>
-            <p class="text-gray-700 text-lg mb-1">
-              <span class="font-semibold">Responsible Veterenian:</span> <%=
-              pet.responsibleVet %>
-            </p>
-            <p class="text-gray-700 text-lg mb-4">
-              <span class="font-semibold">Medical History:</span> <%=
-              pet.medicalHistory %>
-            </p>
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700 text-lg"
+            >
+              <p><span class="font-semibold">Breed:</span> <%= pet.breed %></p>
+              <p>
+                <span class="font-semibold">Age:</span> <%= pet.age %> Years
+              </p>
+              <p>
+                <span class="font-semibold">Gender:</span> <%= pet.gender %>
+              </p>
+              <p>
+                <span class="font-semibold">Species:</span> <%= pet.species %>
+              </p>
+              <p><span class="font-semibold">Color:</span> <%= pet.color %></p>
+              <p>
+                <span class="font-semibold">DOB:</span> <%=
+                pet.dateOfBirth.toString().slice(0,15) %>
+              </p>
+              <p class="sm:col-span-2">
+                <span class="font-semibold">Responsible Vet:</span> <%=
+                pet.responsibleVet %>
+              </p>
+              <p class="sm:col-span-2">
+                <span class="font-semibold">Medical History:</span> <%=
+                pet.medicalHistory %>
+              </p>
+            </div>
 
             <!-- Action Buttons -->
             <div
-              class="flex flex-col sm:flex-row justify-center sm:justify-start space-y-3 sm:space-y-0 sm:space-x-4"
+              class="mt-6 flex flex-col sm:flex-row gap-4 justify-center sm:justify-start"
             >
-              <button
-                class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105"
-              >
-                Book Appointment
-              </button>
-              <form action="/edit-profile/<%=pet._id%>" method="get">
+              <form action="/hospitals" method="GET">
+                <button type="submit" class="btn-custom">
+                  Book Appointment
+                </button>
+              </form>
+              <form action="/edit-profile/<%= pet._id %>" method="get">
                 <button
-                  class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105"
                   type="submit"
+                  class="btn-custom bg-yellow-500 hover:bg-yellow-600"
                 >
                   Edit Details
+                </button>
+              </form>
+              <form action="/delete-profile/<%= pet._id %>" method="get">
+                <button
+                  type="submit"
+                  class="btn-custom bg-red-500 hover:bg-red-600"
+                >
+                  Delete Profile
                 </button>
               </form>
             </div>
@@ -103,20 +107,22 @@
         </div>
       </div>
 
-      <!-- Owner Details Section -->
-      <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-6 sm:p-8">
-        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
-          Owner Details
-        </h2>
-        <p class="text-gray-700 text-lg mb-1">
-          <span class="font-semibold">Name:</span> <%= pet.ownerName %>
-        </p>
-        <p class="text-gray-700 text-lg mb-1">
-          <span class="font-semibold">Phone:</span> <%= pet.phone %>
-        </p>
-        <p class="text-gray-700 text-lg mb-1">
-          <span class="font-semibold">Address:</span> <%= pet.address %>
-        </p>
+      <!-- Owner Details -->
+      <div
+        class="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg p-8 card-hover"
+      >
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Owner Details</h2>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-lg text-gray-700"
+        >
+          <p><span class="font-semibold">Name:</span> <%= pet.ownerName %></p>
+          <p><span class="font-semibold">Phone:</span> <%= pet.phone %></p>
+          <p><span class="font-semibold">Address:</span> <%= pet.address %></p>
+          <p>
+            <span class="font-semibold">District:</span> <%= pet.district %>
+          </p>
+          <p><span class="font-semibold">State:</span> <%= pet.state %></p>
+        </div>
       </div>
     </div>
   </body>

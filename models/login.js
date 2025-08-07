@@ -1,3 +1,4 @@
+const { Template } = require("ejs");
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
@@ -75,7 +76,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "https://cdn-icons-png.flaticon.com/512/616/616408.png",
   },
-
+  district: {
+    type: String,
+  },
+  state: {
+    type: String,
+  },
   role: { type: String, enum: ["user", "admin"], default: "user" },
   createdAt: { type: Date, default: Date.now },
 });

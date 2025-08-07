@@ -26,9 +26,13 @@
     <nav class="bg-teal-500 p-4 shadow-md">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
         <div class="flex items-center">
-          <span class="text-white text-2xl font-bold mr-2">🐾</span>
-          <span class="text-white text-xl font-semibold">PetCare</span>
+          <span class="text-xl font-bold text-white">
+            <a href="/dashboard">&#128062;PetCare</a></span
+          >
         </div>
+        <a href="/profile/<%=id%>" class="text-white hover:underline text-m"
+          >← Back</a
+        >
       </div>
     </nav>
 
@@ -252,6 +256,43 @@
                   class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm text-base focus:ring-teal-500 focus:border-teal-500"
                   placeholder="e.g., Loha, Nanded, Maharashtra"
                 ></textarea>
+              </div>
+              <div>
+                <label
+                  for="petGender"
+                  class="block text-lg font-medium text-gray-700 mb-1"
+                  >District</label
+                >
+                <select
+                  id="pet-district"
+                  name="district"
+                  required
+                  class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm text-base focus:ring-teal-500 focus:border-teal-500"
+                >
+                  <!-- <option value="">Select District</option> -->
+                  <option value="Nanded">Nanded</option>
+                  <option value="Parbhani">Parbhani</option>
+                  <option value="Latur">Latur</option>
+                  <option value="Nashik">Nashik</option>
+                  <option value="Sambhaji-Nagar">Sambhaji-Nagar</option>
+                  <option value="Pune">Pune</option>
+                  <option value="Mumbai">Mubbai</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  for="pet-state"
+                  class="block text-lg font-medium text-gray-700 mb-1"
+                  >State</label
+                >
+                <select
+                  id="petdistrict"
+                  name="state"
+                  required
+                  class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm text-base focus:ring-teal-500 focus:border-teal-500"
+                >
+                  <option value="Maharashtra">Maharashtra</option>
+                </select>
               </div>
             </div>
           </div>
