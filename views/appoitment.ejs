@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Hospital Appointment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white shadow-xl rounded-xl w-full max-w-lg p-6">
+      <h2 class="text-2xl font-bold mb-4 text-center text-blue-700">
+        Book an Appointment
+      </h2>
+
+      <form id="appointmentForm" class="space-y-4">
+        <!-- Hospital Selection -->
+        <div>
+          <label class="block mb-1 font-medium">Select Hospital</label>
+          <select
+            name="hospitalId"
+            id="hospitalSelect"
+            required
+            class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="">Loading hospitals...</option>
+          </select>
+        </div>
+
+        <!-- Patient Name -->
+        <div>
+          <label class="block mb-1 font-medium">Your Name</label>
+          <input
+            type="text"
+            name="patientName"
+            required
+            class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <!-- Contact Number -->
+        <div>
+          <label class="block mb-1 font-medium">Contact Number</label>
+          <input
+            type="tel"
+            name="contact"
+            required
+            placeholder="+91 9876543210"
+            class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label class="block mb-1 font-medium">Email</label>
+          <input
+            type="email"
+            name="email"
+            class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <!-- Service -->
+        <div>
+          <label class="block mb-1 font-medium">Service</label>
+          <input
+            type="text"
+            name="service"
+            placeholder="e.g., General Checkup, Surgery"
+            class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <!-- Date -->
+        <div>
+          <label class="block mb-1 font-medium">Preferred Date</label>
+          <input
+            type="date"
+            name="date"
+            required
+            class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <!-- Time -->
+        <div>
+          <label class="block mb-1 font-medium">Preferred Time</label>
+          <input
+            type="time"
+            name="time"
+            required
+            class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <!-- Notes -->
+        <div>
+          <label class="block mb-1 font-medium">Additional Notes</label>
+          <textarea
+            name="notes"
+            rows="3"
+            class="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          ></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div>
+          <button
+            type="submit"
+            class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-all"
+          >
+            Book Appointment
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      // Fetch hospital list from backend
+      fetch("/api/hospitals") // Your API endpoint
+        .then((res) => res.json())
+        .then((data) => {
+          const select = document.getElementById("hospitalSelect");
+          select.innerHTML = '<option value="">Select Hospital</option>';
+          data.forEach((hospital) => {
+            const option = document.createElement("option");
+            option.value = hospital._id;
+            option.textContent = `${hospital.hospitalName} (${hospital.hospitalType}) - ${hospital.dist}`;
+            select.appendChild(option);
+          });
+        })
+        .catch((err) => {
+          console.error(err);
+          document.getElementById("hospitalSelect").innerHTML =
+            "<option>Error loading hospitals</option>";
+        });
+
+      // Handle form submit
+      document
+        .getElementById("appointmentForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const formData = new FormData(this);
+          const payload = {};
+          formData.forEach((value, key) => (payload[key] = value));
+
+          fetch("/api/appointments", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          })
+            .then((res) => res.json())
+            .then((response) => {
+              alert("Appointment booked successfully!");
+              this.reset();
+            })
+            .catch((err) => {
+              console.error(err);
+              alert("Failed to book appointment.");
+            });
+        });
+    </script>
+  </body>
+</html>

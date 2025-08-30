@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animal Rescue Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .fade-in {
+        animation: fadeIn 0.8s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 text-gray-800">
+    <!-- Header -->
+    <header class="bg-red-400 shadow-lg p-5 text-white">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <h1 class="text-2xl font-bold tracking-wide">
+          🐾 Rescue Dashboard || PetCare
+        </h1>
+        <nav>
+          <a
+            href="/dashboard"
+            class="px-4 py-2 rounded-lg bg-red-400 hover:bg-red-500 transition"
+            >back</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- Search Section -->
+    <section class="bg-white shadow-md p-6 rounded-xl max-w-4xl mx-auto mt-8">
+      <h2 class="text-2xl font-semibold text-red-700 mb-4">
+        🔍 Search Rescue Teams by City
+      </h2>
+      <form method="GET" action="/rescue-teams" class="flex gap-4">
+        <input
+          type="text"
+          name="city"
+          placeholder="Enter city name..."
+          class="flex-1 px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-400"
+        />
+        <button
+          type="submit"
+          class="bg-red-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-red-500 transition"
+        >
+          Search
+        </button>
+      </form>
+    </section>
+
+    <!-- Rescue Cards -->
+    <main
+      class="max-w-7xl mx-auto mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+    >
+      <% rescueTeams.forEach(team => { %>
+      <div
+        class="fade-in bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition transform hover:scale-105"
+      >
+        <h3 class="text-xl font-bold text-red-700 mb-2"><%= team.name %></h3>
+        <p class="text-gray-600 mb-1">
+          📍 <span class="font-medium"><%= team.location %></span>
+        </p>
+        <p class="text-gray-600 mb-4">📞 <%= team.phone %></p>
+        <a
+          href="tel:<%= team.phone %>"
+          class="bg-red-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-400 transition"
+        >
+          Call Now
+        </a>
+      </div>
+      <% }) %>
+    </main>
+  </body>
+</html>

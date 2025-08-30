@@ -7,6 +7,8 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const User = require("./models/login.js"); //User Database
 const Hospital = require("./models/hospitals.js"); //Hospital database
+const snakerescue = require("./models/snake.js"); // Snake Rescue Database
+const breed = require("./models/breeds.js"); //Breed Data
 const PORT = 3000;
 const dotenv = require("dotenv").config();
 const path = require("path");
@@ -14,7 +16,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // Connect MongoDB
 async function main() {
   try {
-    await mongoose.connect("mongodb://127.0.0.1:27017/profile");
+    await mongoose.connect(process.env.MONGOOSE);
     console.log("Connected to DB");
   } catch (err) {
     console.log(err);
@@ -53,7 +55,7 @@ app.get("/", (req, res) => {
 });
 //signup
 app.get("/signup", (req, res) => {
-  res.render("signup");
+  res.render("Signup/signup");
 });
 //Signup
 app.post("/signup", async (req, res) => {
@@ -68,7 +70,7 @@ app.post("/signup", async (req, res) => {
 });
 //Login
 app.get("/login", (req, res) => {
-  res.render("login");
+  res.render("Login/login");
 });
 //Login Authentication
 app.post("/login", async (req, res) => {
@@ -97,7 +99,7 @@ app.get("/profile/:id", async (req, res) => {
     let user = await User.findById(id);
     // console.log(user);
     const pet = user;
-    res.render("profile", { pet });
+    res.render("Profile/profile", { pet });
   } catch (err) {
     console.log("User Not Found", err);
   }
@@ -108,7 +110,7 @@ app.get("/edit-profile/:id", async (req, res) => {
   let id = req.params.id;
   let pet = await User.findById(id);
   // console.log(user);
-  res.render("edit-profile", { pet });
+  res.render("Profile/edit-profile", { pet });
 });
 
 // Edit profile POST
@@ -178,7 +180,6 @@ app.delete("/delete-profile/:id", async (req, res) => {
     }).then((res) => {
       console.log("User Deleted");
     });
-
     let pet = await User.findById(req.params.id);
     res.render("profile.ejs", { pet });
   } catch (err) {
@@ -189,6 +190,7 @@ app.delete("/delete-profile/:id", async (req, res) => {
 // -------------------------------------------------------  Hospitals ----------------------------
 
 //Hosptial Finding Route
+
 app.get("/hospitals", async (req, res) => {
   try {
     let hospital = await Hospital.find({});
@@ -210,7 +212,8 @@ app.post("/hospitals/find", async (req, res) => {
   console.log(req.body);
 });
 
-//Animal Info Route
+//--------------------------------Animal Info Routes
+
 app.get("/animal-info/cow-care", (req, res) => {
   res.render("cow-care.ejs");
 });
@@ -230,9 +233,107 @@ app.get("/animal-info/birds-care", (req, res) => {
   res.render("birds-care.ejs");
 });
 
-//Snake Rescue
-app.get("/petcare/snake-rescue", (req, res) => {
-  res.render("snake-rescue.ejs");
+//------------------------------Snake Rescue
+app.get("/petcare/snake-rescue", async (req, res) => {
+  try {
+    let data = await snakerescue.find({});
+    res.render("snake-rescue.ejs", { data });
+  } catch (err) {
+    console.log(err);
+  }
+});
+app.post("/petcare/find", async (req, res) => {
+  let { city } = req.body;
+  try {
+    if (city === "All") {
+      let data = await snakerescue.find({});
+      res.render("snake-rescue.ejs", { data });
+    } else {
+      let data = await snakerescue.find({ city: city });
+      res.render("snake-rescue.ejs", { data });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//-------------Book Appoitment----------
+
+app.get("/hospitals/appointment/:id", (req, res) => {
+  res.render("appoitment.ejs");
+});
+
+//  Cow
+app.get("/animal-info/cow-breeds", async (req, res) => {
+  try {
+    const breeds = await breed.find({ cat: "cow" });
+    res.render("cow-breeds", { breeds });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//Buffalo
+app.get("/animal-info/buffalo-breeds", async (req, res) => {
+  try {
+    const breeds = await breed.find({ cat: "buffalo" });
+    res.render("buffalo-breed", { breeds });
+  } catch (err) {
+    console.log(err);
+  }
+});
+//Dog
+app.get("/animal-info/dog-breeds", async (req, res) => {
+  try {
+    const breeds = await breed.find({ cat: "dog" });
+    res.render("dog-breed", { breeds });
+  } catch (err) {
+    console.log(err);
+  }
+});
+//Cat
+app.get("/animal-info/cat-breeds", async (req, res) => {
+  try {
+    const breeds = await breed.find({ cat: "cat" });
+    res.render("cat-breed", { breeds });
+  } catch (err) {
+    console.log(err);
+  }
+});
+//Birds
+app.get("/animal-info/birds-breeds", async (req, res) => {
+  try {
+    const breeds = await breed.find({ cat: "bird" });
+
+    res.render("bird-breed", { breeds });
+  } catch (err) {
+    console.log(err);
+  }
+});
+//Goat Care
+app.get("/animal-info/goat-breeds", async (req, res) => {
+  try {
+    const breeds = await breed.find({ cat: "goat" });
+
+    res.render("goat-breed", { breeds });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+app.get("/rescue-teams", (req, res) => {
+  const rescueTeams = [
+    { name: "Nanded Animal Rescue", location: "Nanded", phone: "9876543210" },
+    { name: "Mumbai Pashu Seva", location: "Mumbai", phone: "9123456780" },
+    { name: "Pune Animal Help", location: "Pune", phone: "9988776655" },
+    { name: "Nagpur Animal Aid", location: "Nagpur", phone: "9012345678" },
+    {
+      name: "Aurangabad Rescue Force",
+      location: "Aurangabad",
+      phone: "8765432109",
+    },
+  ];
+  res.render("rescue-teams", { rescueTeams });
 });
 
 //Error Handling Middleware
