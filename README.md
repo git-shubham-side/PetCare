@@ -1,2 +1,1 @@
-# PetCare
-A petcare project for pet parents
+# OPEN FOR CONTRIBUTION
